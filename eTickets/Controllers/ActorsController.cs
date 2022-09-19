@@ -1,6 +1,6 @@
 ﻿using eTickets.Data;
-using eTickets.Data.Services;
 using eTickets.Models;
+using eTickets.Services.Base;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

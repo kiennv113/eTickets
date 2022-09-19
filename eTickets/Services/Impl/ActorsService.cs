@@ -1,4 +1,5 @@
 ﻿using eTickets.Models;
+using eTickets.Services.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
