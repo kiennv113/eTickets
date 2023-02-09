@@ -36,6 +36,7 @@ namespace eTickets
             services.AddScoped<IActorsService, ActorsService>();
             services.AddScoped<IProducersService, ProducersService>();
             services.AddScoped<IMoviesService, MoviesService>();
+            services.AddScoped<IAccountsService, AccountsService>();
 
             services.AddAuthentication()
                 .AddGoogle(googleOptions =>
@@ -47,7 +48,6 @@ namespace eTickets
                     googleOptions.ClientId = googleAuthNSection["ClientId"];
                     googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
                     // Cấu hình Url callback lại từ Google (không thiết lập thì mặc định là /signin-google)
-                    googleOptions.CallbackPath = "/signin-google";
 
                 });
             services.AddControllersWithViews();
@@ -72,6 +72,7 @@ namespace eTickets
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
@@ -80,8 +81,6 @@ namespace eTickets
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //Seed Database
-            AppDbInitializer.Seed(app);
         }
     }
 }
